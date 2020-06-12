@@ -34,7 +34,6 @@ class LinkedListTests(unittest.TestCase):
     self.list.add_to_head(3)
     self.list.add_to_head(4)
     self.list.add_to_head(5)
-    print(self.list.head.value)
     self.assertEqual(self.list.head.value, 5)
     self.list.reverse_list(self.list.head, None)
     self.assertEqual(self.list.head.value, 1)

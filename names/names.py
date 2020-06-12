@@ -2,13 +2,6 @@ import time
 
 start_time = time.time()
 
-class Names:
-    def __init__(self, value):
-        self.value = value
-        self.left = None
-        self.right = None
-       
-
 f = open('names_1.txt', 'r')
 names_1 = f.read().split("\n")  # List containing 10000 names
 f.close()
@@ -20,12 +13,49 @@ f.close()
 duplicates = []  # Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
+
 # for name_1 in names_1:
 #     for name_2 in names_2:
 #         if name_1 == name_2:
 #             duplicates.append(name_1)
-# def contains(self, duplicates):
-#     print(names_1)
+
+
+
+class Name:
+    def __init__(self, names):
+        self.names = names
+        self.left = None
+        self.right = None
+        
+    def insert(self, names):
+        for names in names_1:
+            if names < self.names:
+                if self.left is None:
+                    self.left = Name(names)
+                else:
+                    self.left.insert(names)
+            elif names >= self.names:
+                if self.right is None:
+                    self.right = Name(names)
+                else:
+                    self.right.insert(names)
+       
+    def contains(self, names):
+        if self.names == names:
+            return True
+        if self.names < names:
+            if self.right is None:
+                return False
+            else:
+                return self.right.contains(names)
+        if self.names > names:
+            if self.left is None:
+                return False
+            else:
+                return self.left.contains(names)
+
+            
+
 
 
 end_time = time.time()
